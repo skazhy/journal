@@ -1,0 +1,7 @@
+%crimson-text {
+  font-family: "Crimson Text", serif;
+}
+
+h1 {
+  @extend %crimson-text;
+}
