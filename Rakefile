@@ -3,9 +3,7 @@ require 'aws/s3'
 def traverse(dir)
   Dir.foreach(dir) do |entry|
     de = "#{dir}/#{entry}"
-    if [".", ".."].include? entry
-      next
-    end
+    next if [".", ".."].include?
     if File.directory? de
       traverse(de)
     else
@@ -16,6 +14,10 @@ end
 
 desc 'Deploy to S3'
 task :deploy do
+  # Regenerate before upload
+  system 'jekyll'
+  system 'compass compile'
+
   AWS::S3::Base.establish_connection!(
     :access_key_id => ENV["AMAZON_ACCESS_KEY_ID"],
     :secret_access_key => ENV["AMAZON_SECRET_ACCESS_KEY"]
