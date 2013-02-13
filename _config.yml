@@ -1,1 +1,2 @@
+auto: true
 exclude: Rakefile, sass, Gemfile, Gemfile.lock, config.rb
