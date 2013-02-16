@@ -1,15 +1,37 @@
+@import "compass/css3/border-radius";
 @import "compass/typography/vertical_rhythm";
 
 $base-font-size: 18px;
 $base-line-height: 30px;
 @include establish-baseline;
 
+article, header {
+  display: block;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+a:active, a:hover, a:focus {
+  outline: 0;
+}
+
 // Sensible reset
-body, div, p, header, article, h1 {
+body, div, p, header, article, h1, pre {
   margin: 0;
   padding: 0;
   font-size: inherit;
   line-height: inherit;
+}
+
+pre {
+  @include adjust-font-size-to(12px);
+  @include trailer(1.5);
+  background-color: #eee;
+  border-left: 10px solid #ccc;
+  padding-left: 10px;
+  @include border-radius(2px);
 }
 
 %crimson-text {
@@ -33,6 +55,7 @@ h1 {
   p:first-child {
     @include adjust-font-size-to(20px);
     @include trailing-border(3px, 0.5, $border-style: double);
-    @include trailer(0.5);
+    @include trailer(0.4);
+    font-style: italic;
   }
 }
