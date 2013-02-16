@@ -1,7 +1,38 @@
+@import "compass/typography/vertical_rhythm";
+
+$base-font-size: 18px;
+$base-line-height: 30px;
+@include establish-baseline;
+
+// Sensible reset
+body, div, p, header, article, h1 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 %crimson-text {
   font-family: "Crimson Text", serif;
+}
+body {
+  width: 580px;
+  margin: 0 auto;
 }
 
 h1 {
   @extend %crimson-text;
+  @include adjust-font-size-to(30px);
+}
+
+#words {
+  @extend %crimson-text;
+  p {
+    @include trailer(1);
+  }
+  p:first-child {
+    @include adjust-font-size-to(20px);
+    @include trailing-border(3px, 0.5, $border-style: double);
+    @include trailer(0.5);
+  }
 }
