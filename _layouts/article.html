@@ -7,7 +7,7 @@ layout: base
     <h1>{{ page.title }}</h1>
     <time datetime="{{ page.published }}">{{ page.published | date: "%b %d %Y" }}</time>
   </header>
-  <section>
+  <div id="words">
     {{ content }}
-  </section>
+  </div>
 </article>
