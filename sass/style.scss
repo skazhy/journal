@@ -31,11 +31,21 @@ a {
 }
 
 // Sensible reset
-body, div, p, header, article, h1, pre {
+body, div, p, header, article, h1, pre, ul, ol {
   margin: 0;
   padding: 0;
   font-size: inherit;
   line-height: inherit;
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding-left: $base-line-height;
+  @include trailer(1);
+}
+
+ul {
+  list-style-type: circle;
 }
 
 p > code, pre {
