@@ -1,8 +1,11 @@
 @import "compass/css3/border-radius";
+@import "compass/css3/transition";
 @import "compass/typography/vertical_rhythm";
 
 $base-font-size: 18px;
 $base-line-height: 30px;
+$crimson: #ab6269;
+
 @include establish-baseline;
 
 article, header {
@@ -13,8 +16,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-a:active, a:hover, a:focus {
-  outline: 0;
+a {
+  color: $crimson;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba($crimson, 0.7);
+  @include transition(border-color .5s, color .5s);
+
+  &:hover, &:active, &:focus {
+    outline: 0;
+    color: #000;
+    border-color: #000;
+    @include transition(border-color .5s, color .5s);
+  }
 }
 
 // Sensible reset
