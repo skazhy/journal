@@ -1,3 +1,18 @@
 ---
 layout: base
 ---
+<div id="firstpage">
+  {% assign prev = "" %}
+
+  {% for post in site.posts %}
+    {% assign curr = post.published | date: "%Y.%m" %}
+    {% if curr != prev %}
+      {% if post != site.posts.first %}</section>{% endif %}
+      <section class="month">
+        <h1>{{ curr }}</h1>
+    {% endif %}
+    <article><a href="{{ post.url}}">{{ post.title }}</a></article>
+    {% if post == site.posts.last %}</section>{% endif %}
+    {% assign prev = curr %}
+  {% endfor %}
+</div>

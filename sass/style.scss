@@ -5,6 +5,7 @@
 $base-font-size: 18px;
 $base-line-height: 30px;
 $crimson: #ab6269;
+$max-width: 560px;
 
 @include establish-baseline;
 
@@ -73,13 +74,19 @@ p > code {
   font-family: "Crimson Text", serif;
 }
 body {
-  width: 580px;
+  width: $max-width;
   margin: 0 auto;
 }
 
 h1 {
   @extend %crimson-text;
   @include adjust-font-size-to(30px);
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+header {
+  @include trailer(1);
 }
 
 #words {
@@ -90,7 +97,27 @@ h1 {
   p:first-child {
     @include adjust-font-size-to(20px);
     @include trailing-border(3px, 0.5, $border-style: double);
+    border-color: #ccc;
     @include trailer(0.4);
     font-style: italic;
+  }
+}
+
+#firstpage {
+  @include leader(5);
+}
+
+.month {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 2px;
+    line-height: inherit;
+    @include adjust-font-size-to(20px);
+    font-weight: normal;
+  }
+  article {
+    margin-left: $base-line-height*3;
   }
 }
