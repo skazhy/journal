@@ -121,3 +121,12 @@ header {
     margin-left: $base-line-height*3;
   }
 }
+
+article footer {
+  @include adjust-font-size-to(12px);
+  color: #333;
+}
+
+body > footer {
+  @include leader(1);
+}
