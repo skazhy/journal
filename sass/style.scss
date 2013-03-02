@@ -32,7 +32,7 @@ a {
 }
 
 // Sensible reset
-body, div, p, header, article, h1, pre, ul, ol {
+body, div, p, header, article, h1, pre, ul, ol, aside {
   margin: 0;
   padding: 0;
   font-size: inherit;
@@ -85,6 +85,10 @@ h1 {
   padding-bottom: 0;
 }
 
+aside {
+  @extend %crimson-text;
+}
+
 header {
   @include trailer(1);
 }
@@ -110,9 +114,8 @@ header {
 .month {
   position: relative;
 
-  h1 {
+  aside {
     position: absolute;
-    top: 2px;
     line-height: inherit;
     @include adjust-font-size-to(20px);
     font-weight: normal;
