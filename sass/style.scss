@@ -5,7 +5,7 @@
 $base-font-size: 18px;
 $base-line-height: 30px;
 $crimson: #ab6269;
-$max-width: 560px;
+$max-width: 600px;
 
 @include establish-baseline;
 
@@ -47,6 +47,12 @@ ul, ol {
 
 ul {
   list-style-type: circle;
+}
+
+sup {
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
 }
 
 p > code, pre {
@@ -98,7 +104,7 @@ header {
   p {
     @include trailer(1);
   }
-  p:first-child {
+  > p:first-child {
     @include adjust-font-size-to(20px);
     @include trailing-border(3px, 0.5, $border-style: double);
     border-color: #ccc;
@@ -132,4 +138,26 @@ article footer {
 
 body > footer {
   @include leader(1);
+}
+
+
+sup a {
+  border-bottom: none;
+  font-size: 0.8em;
+}
+
+.footnotes {
+  // Should do this on Jekyll level, not here
+  hr { display: none; }
+  ol li p {
+    display: inline;
+    font-style: italic;
+  }
+  ol li a {
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
+    border-bottom: none;
+    font-size: 0.8em;
+  }
 }
