@@ -9,12 +9,57 @@ $max-width: 600px;
 
 @include establish-baseline;
 
-article, header {
-  display: block;
+%crimson-text {
+  font-family: "Crimson Text", serif;
+}
+
+%supertext-anchor {
+  vertical-align: baseline;
+  top: -0.5em;
+  border-bottom: none;
+  font-size: 0.8em;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
+}
+
+body, div, p, header, article, h1, pre, ul, ol, aside {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+body {
+  width: $max-width;
+  margin: 0 auto;
+}
+
+h1, aside, footer {
+  @extend %crimson-text;
+}
+
+h1 {
+  @include adjust-font-size-to(30px);
+}
+
+h2 {
+  @include adjust-font-size-to(20px);
+  @include trailer(.9);
+}
+
+article, header {
+  display: block;
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding-left: $base-line-height;
+  @include trailer(1);
+}
+
+ul {
+  list-style-type: circle;
 }
 
 a {
@@ -31,73 +76,45 @@ a {
   }
 }
 
-// Sensible reset
-body, div, p, header, article, h1, pre, ul, ol, aside {
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-ul, ol {
-  list-style-position: inside;
-  padding-left: $base-line-height;
-  @include trailer(1);
-}
-
-ul {
-  list-style-type: circle;
-}
-
 sup {
   position: relative;
   vertical-align: baseline;
   top: -0.5em;
-}
-
-p > code, pre {
-  background-color: #eee;
-  color: #333;
-  @include border-radius(2px);
-}
-
-// Block
-pre {
-  @include adjust-font-size-to(12px);
-  @include trailer(1.5);
-  border-left: 10px solid #ccc;
-  padding-left: 10px;
-}
-
-// Inline
-p > code {
-  display: inline-block;
-  margin: 0 3px;
-  padding: 0 6px;
-}
-
-%crimson-text {
-  font-family: "Crimson Text", serif;
-}
-body {
-  width: $max-width;
-  margin: 0 auto;
-}
-
-h1 {
-  @extend %crimson-text;
-  @include adjust-font-size-to(30px);
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-aside {
-  @extend %crimson-text;
+  a { @extend %supertext-anchor; }
 }
 
 header {
   @include trailer(1);
 }
+
+//
+// First page article listing & footer
+//
+$article-left-margin: $base-line-height*3;
+
+#firstpage {
+  @include leader(5);
+}
+
+.month {
+  position: relative;
+
+  aside {
+    position: absolute;
+    @include adjust-font-size-to(20px);
+  }
+  article {
+    margin-left: $article-left-margin;
+  }
+}
+
+body > footer {
+  @include leader(1);
+}
+
+//
+// Single article
+//
 
 #words {
   @extend %crimson-text;
@@ -113,39 +130,6 @@ header {
   }
 }
 
-#firstpage {
-  @include leader(5);
-}
-
-.month {
-  position: relative;
-
-  aside {
-    position: absolute;
-    line-height: inherit;
-    @include adjust-font-size-to(20px);
-    font-weight: normal;
-  }
-  article {
-    margin-left: $base-line-height*3;
-  }
-}
-
-article footer {
-  @include adjust-font-size-to(12px);
-  color: #333;
-}
-
-body > footer {
-  @include leader(1);
-}
-
-
-sup a {
-  border-bottom: none;
-  font-size: 0.8em;
-}
-
 .footnotes {
   // Should do this on Jekyll level, not here
   hr { display: none; }
@@ -154,10 +138,37 @@ sup a {
     font-style: italic;
   }
   ol li a {
-    position: relative;
-    vertical-align: baseline;
-    top: -0.5em;
-    border-bottom: none;
-    font-size: 0.8em;
+    @extend %supertext-anchor;
   }
+}
+
+article footer {
+  color: #999;
+}
+
+//
+// Code
+//
+$code-block-border: $base-line-height/3;
+
+p > code, pre {
+  background-color: #eee;
+  color: #333;
+  @include border-radius(2px);
+}
+
+// Code block
+pre {
+  @include adjust-font-size-to(12px);
+  @include trailer(1.5);
+  border-left: $code-block-border solid #ccc;
+  padding-left: $code-block-border;
+}
+
+// Inline code markup
+p > code {
+  @include adjust-font-size-to(12px);
+  display: inline-block;
+  padding: 0 6px;
+  vertical-align: top;
 }
