@@ -35,10 +35,9 @@ body {
   margin: 0 auto;
 }
 
-h1, aside, footer {
+h1, aside, footer, article {
   @extend %crimson-text;
 }
-
 h1 {
   @include adjust-font-size-to(30px);
 }
@@ -95,13 +94,15 @@ $article-left-margin: $base-line-height*3;
 #firstpage {
   @include leader(5);
 }
+article a {
+  border-bottom: none;
+}
 
 .month {
   position: relative;
 
   aside {
     position: absolute;
-    @include adjust-font-size-to(20px);
   }
   article {
     margin-left: $article-left-margin;
@@ -115,6 +116,10 @@ body > footer {
 //
 // Single article
 //
+time {
+  @include adjust-font-size-to(12px);
+  vertical-align: top;
+}
 
 #words {
   @extend %crimson-text;
@@ -144,6 +149,7 @@ body > footer {
 
 article footer {
   color: #999;
+  @include trailer(2);
 }
 
 //
