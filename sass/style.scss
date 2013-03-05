@@ -91,11 +91,8 @@ header {
 //
 $article-left-margin: $base-line-height*3;
 
-#firstpage {
+.month:first-child {
   @include leader(5);
-}
-article a {
-  border-bottom: none;
 }
 
 .month {
@@ -108,6 +105,8 @@ article a {
     margin-left: $article-left-margin;
   }
 }
+
+.link-to-article { border-bottom: none; }
 
 body > footer {
   @include leader(1);
