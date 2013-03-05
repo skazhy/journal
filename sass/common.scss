@@ -1,0 +1,18 @@
+$base-font-size: 18px;
+$base-line-height: 30px;
+$crimson: #ab6269;
+$max-width: 600px;
+
+%supertext-anchor {
+  vertical-align: baseline;
+  top: -0.5em;
+  border-bottom: none;
+  font-size: 0.8em;
+}
+
+%code-snippet {
+  background-color: #eee;
+  color: #333;
+  @include border-radius(2px);
+  @include adjust-font-size-to(12px);
+}

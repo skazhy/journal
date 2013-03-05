@@ -2,14 +2,12 @@
 layout: base
 ---
 
-<article>
+<article id="words">
   <header>
     <h1>{{ page.title }}</h1>
     <p><time datetime="{{ page.published }}">{{ page.published | date: "%b %d %Y" }}</time></p>
   </header>
-  <div id="words">
-    {{ content }}
-  </div>
+  {{ content }}
   <footer>
     &#x270c; {{ page.published | date: "%Y" }},  {{ site.author }}
   </footer>

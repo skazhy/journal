@@ -1,24 +1,9 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/transition";
 @import "compass/typography/vertical_rhythm";
-
-$base-font-size: 18px;
-$base-line-height: 30px;
-$crimson: #ab6269;
-$max-width: 600px;
+@import "common";
 
 @include establish-baseline;
-
-%crimson-text {
-  font-family: "Crimson Text", serif;
-}
-
-%supertext-anchor {
-  vertical-align: baseline;
-  top: -0.5em;
-  border-bottom: none;
-  font-size: 0.8em;
-}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -31,13 +16,15 @@ body, div, p, header, article, h1, pre, ul, ol, aside {
 }
 
 body {
+  font-family: "Crimson Text", serif;
   width: $max-width;
   margin: 0 auto;
 }
 
-h1, aside, footer, article {
-  @extend %crimson-text;
+p {
+  @include trailer(1);
 }
+
 h1 {
   @include adjust-font-size-to(30px);
 }
@@ -120,33 +107,26 @@ time {
   vertical-align: top;
 }
 
-#words {
-  @extend %crimson-text;
-  p {
-    @include trailer(1);
-  }
-  > p:first-child {
-    @include adjust-font-size-to(20px);
-    @include trailing-border(3px, 0.5, $border-style: double);
-    border-color: #ccc;
-    @include trailer(0.4);
-    font-style: italic;
-  }
+// First paragraph of article
+#words > p:nth-of-type(1) {
+  @include adjust-font-size-to(20px);
+  @include trailing-border(3px, 0.5, $border-style: double);
+  border-color: #ccc;
+  @include trailer(0.4);
+  font-style: italic;
 }
 
 .footnotes {
-  // Should do this on Jekyll level, not here
-  hr { display: none; }
-  ol li p {
+  hr { display: none; }  // should remove hr in Jekyll, not here
+  a { @extend %supertext-anchor; }
+  p {
+    margin-bottom: inherit;
     display: inline;
     font-style: italic;
   }
-  ol li a {
-    @extend %supertext-anchor;
-  }
 }
 
-article footer {
+#words > footer {
   color: #999;
   @include trailer(2);
 }
@@ -156,15 +136,10 @@ article footer {
 //
 $code-block-border: $base-line-height/3;
 
-p > code, pre {
-  background-color: #eee;
-  color: #333;
-  @include border-radius(2px);
-}
-
 // Code block
 pre {
-  @include adjust-font-size-to(12px);
+  @extend %code-snippet;
+
   @include trailer(1.5);
   border-left: $code-block-border solid #ccc;
   padding-left: $code-block-border;
@@ -172,7 +147,9 @@ pre {
 
 // Inline code markup
 p > code {
-  @include adjust-font-size-to(12px);
+  @extend %code-snippet;
+
+  line-height: inherit;
   display: inline-block;
   padding: 0 6px;
   vertical-align: top;
