@@ -1,4 +1,3 @@
-auto: true
 safe: false
 exclude: Rakefile, sass, Gemfile, Gemfile.lock, config.rb
 permalink: /:year/:title

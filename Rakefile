@@ -1,13 +1,19 @@
 require 'aws/s3'
 
-def traverse(dir)
-  Dir.foreach(dir) do |entry|
-    de = "#{dir}/#{entry}"
-    next if [".", ".."].include?
-    if File.directory? de
-      traverse(de)
+def upload(path)
+  file_key = path[6..-1]
+  puts "Uploading #{file_key}"
+  AWS::S3::S3Object.store(file_key, open(path), S3_BUCKET, {'x-amz-acl' => 'public-read'})
+end
+
+def traverse(root)
+  Dir.foreach(root) do |entry|
+    next if [".", ".."].include? entry
+    path = "#{root}/#{entry}"
+    if File.directory? path
+      traverse(path)
     else
-      AWS::S3::S3Object.store(de[6..-1], open(de[6..-1]), "karlis.me")
+      upload(path)
     end
   end
 end
@@ -15,8 +21,8 @@ end
 desc 'Deploy to S3'
 task :deploy do
   # Regenerate before upload
-  system 'jekyll'
-  system 'compass compile'
+  system 'jekyll --no-future > /dev/null'
+  system 'compass compile -q'
 
   AWS::S3::Base.establish_connection!(
     :access_key_id => ENV["AMAZON_ACCESS_KEY_ID"],
@@ -28,7 +34,7 @@ end
 
 desc 'Run Jekyll server'
 task :server do
-  webrick = Process.spawn('jekyll --server')
+  webrick = Process.spawn('jekyll --server --auto')
   compass = Process.spawn('compass watch')
 
   trap('INT') {
