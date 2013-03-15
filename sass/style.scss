@@ -74,7 +74,7 @@ header {
 //
 $article-left-margin: $base-line-height*3;
 
-.month:first-child {
+.month:first-child, #for-oh-for {
   @include leader(5);
 }
 
