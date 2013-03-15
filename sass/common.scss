@@ -11,6 +11,8 @@ $max-width: 600px;
 }
 
 %code-snippet {
+  font-family: monospace;
+  text-shadow: 1px 1px 1px #fff;
   background-color: #eee;
   color: #333;
   @include border-radius(2px);

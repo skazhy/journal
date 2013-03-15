@@ -2,16 +2,16 @@
 @import "compass/css3/transition";
 @import "compass/typography/vertical_rhythm";
 @import "common";
+@import "normalize";
 
 @include establish-baseline;
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
 
 body, div, p, header, article, h1, pre, ul, ol, aside {
   margin: 0;
   padding: 0;
+}
+
+body, div, p, header, article, h1, ul, ol, aside {
   font-size: inherit;
 }
 
@@ -32,10 +32,6 @@ h1 {
 h2 {
   @include adjust-font-size-to(20px);
   @include trailer(.9);
-}
-
-article, header {
-  display: block;
 }
 
 ul, ol {
@@ -129,6 +125,10 @@ time {
 #words > footer {
   color: #999;
   @include trailer(2);
+}
+
+a[rev=footnote] {
+  margin-left: 10px;
 }
 
 //

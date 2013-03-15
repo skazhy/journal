@@ -1,0 +1,13 @@
+// Some useful bits, grabbed from normalize.css 2.1.0
+// http://necolas.github.com/normalize.css/2.1.0/normalize.css
+
+// Block display not defined in IE 8/9
+article, aside, footer, header, section {
+  display: block;
+}
+
+// Prevent iOS text size adjust after orientation change
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
