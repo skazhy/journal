@@ -1,5 +1,7 @@
 require 'aws/s3'
 
+S3_BUCKET = "karlis.me"
+
 def upload(path)
   file_key = path[6..-1]
   puts "Uploading #{file_key}"
