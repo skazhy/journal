@@ -1,5 +1,6 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/transition";
+@import "compass/css3/user-interface";
 @import "compass/typography/vertical_rhythm";
 @import "common";
 @import "normalize";
@@ -153,4 +154,26 @@ p > code {
   display: inline-block;
   padding: 0 6px;
   vertical-align: top;
+}
+
+
+#left {
+  position: fixed;
+  left: 10%;
+  top: 0;
+}
+
+#asterisks {
+  @include adjust-font-size-to(30px);
+  color: #eee;
+  border: none;
+
+  @include user-select(none);
+  @include transition(color 1s);
+}
+
+#asterisks:hover {
+  color: $crimson;
+  @include transition(color 1s);
+  @include user-select(none);
 }
