@@ -1,5 +1,6 @@
 safe: false
-exclude: Rakefile, sass, Gemfile, Gemfile.lock, config.rb
+future: false
+exclude: [Rakefile, sass, Gemfile, Gemfile.lock, config.rb]
 permalink: /:year/:title
 
 author: Kārlis Lauva

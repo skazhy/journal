@@ -23,7 +23,7 @@ end
 desc 'Deploy to S3'
 task :deploy do
   # Regenerate before upload
-  system 'jekyll --no-future > /dev/null'
+  system 'jekyll build > /dev/null'
   system 'compass compile -q'
 
   AWS::S3::Base.establish_connection!(
@@ -36,7 +36,7 @@ end
 
 desc 'Run Jekyll server'
 task :server do
-  webrick = Process.spawn('jekyll --server --auto')
+  webrick = Process.spawn('jekyll serve --future --drafts --watch')
   compass = Process.spawn('compass watch')
 
   trap('INT') {
