@@ -12,7 +12,11 @@ title: karlis.me
       <aside>{{ curr }}</aside>
   {% endif %}
 
-  <article><a class="link-to-article" href="{{ post.url}}">{{ post.title }}</a></article>
+  <article>
+    <a class="link-to-article{% if post.draft? %} draft{% endif %}" href="{{ post.url}}">
+      {{ post.title }}
+    </a>
+  </article>
 
   {% if post == site.posts.last %}</section>{% endif %}
   {% assign prev = curr %}

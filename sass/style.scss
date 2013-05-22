@@ -177,3 +177,8 @@ p > code {
   @include transition(color 1s);
   @include user-select(none);
 }
+
+.draft {
+  color: #999;
+  opacity: 0.3;
+}
