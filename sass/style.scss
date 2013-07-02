@@ -115,7 +115,6 @@ time {
 
 .footnotes {
   hr { display: none; }  // should remove hr in Jekyll, not here
-  a { @extend %supertext-anchor; }
   p {
     margin-bottom: inherit;
     display: inline;
@@ -129,6 +128,7 @@ time {
 }
 
 a[rev=footnote] {
+  @extend %supertext-anchor;
   margin-left: 10px;
 }
 
