@@ -99,9 +99,10 @@ body > footer {
 //
 // Single article
 //
-time {
+#minutes {
   @include adjust-font-size-to(12px);
   vertical-align: top;
+  font-style: italic
 }
 
 // First paragraph of article
