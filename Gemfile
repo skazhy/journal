@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'aws-s3',  '~> 0.6.3'
 gem 'compass', '~> 0.12.2'
